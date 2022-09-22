@@ -111,6 +111,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Day1-DotNetControls.aspx" />
+    <Content Include="Day2-ValidationControls.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Day1-DotNetControls.aspx.designer.cs">
       <DependentUpon>Day1-DotNetControls.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Day2-ValidationControls.aspx.cs">
+      <DependentUpon>Day2-ValidationControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Day2-ValidationControls.aspx.designer.cs">
+      <DependentUpon>Day2-ValidationControls.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
