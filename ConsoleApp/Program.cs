@@ -6,10 +6,15 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Student student = new Student("Ramesh","Sharma",60);            
-            Console.WriteLine(student.Name);  
-            Console.WriteLine(student.Result); 
-            Console.ReadKey(); 
+            //Class_A class_A = new Class_A(10, 5);
+            //class_A.Total();
+
+            Class_C class_c = new Class_C(10, 5);
+            class_c.Total();
+            class_c.Multiply();
+            class_c.Subtract();
+
+            Console.ReadKey();
         }
     }
 
