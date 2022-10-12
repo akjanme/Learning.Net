@@ -110,8 +110,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Day-3_Javascript.aspx" />
     <Content Include="Day1-DotNetControls.aspx" />
     <Content Include="Day2-ValidationControls.aspx" />
+    <Content Include="Day4-Jquery.aspx" />
+    <Content Include="Day_5_Ado_1.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -131,6 +134,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.1.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -162,6 +166,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Day-3_Javascript.aspx.cs">
+      <DependentUpon>Day-3_Javascript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Day-3_Javascript.aspx.designer.cs">
+      <DependentUpon>Day-3_Javascript.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Day1-DotNetControls.aspx.cs">
       <DependentUpon>Day1-DotNetControls.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,6 +186,20 @@
     </Compile>
     <Compile Include="Day2-ValidationControls.aspx.designer.cs">
       <DependentUpon>Day2-ValidationControls.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Day4-Jquery.aspx.cs">
+      <DependentUpon>Day4-Jquery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Day4-Jquery.aspx.designer.cs">
+      <DependentUpon>Day4-Jquery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Day_5_Ado_1.aspx.cs">
+      <DependentUpon>Day_5_Ado_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Day_5_Ado_1.aspx.designer.cs">
+      <DependentUpon>Day_5_Ado_1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

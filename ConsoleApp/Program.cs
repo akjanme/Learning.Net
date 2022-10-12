@@ -14,6 +14,10 @@ namespace ConsoleApp
             class_c.Multiply();
             class_c.Subtract();
 
+            SmartPhone smartPhone = new SmartPhone();
+            smartPhone.Calling();
+            smartPhone.TouchScreen(); 
+
             Console.ReadKey();
         }
     }

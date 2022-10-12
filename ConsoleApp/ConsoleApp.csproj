@@ -46,6 +46,7 @@
     <Compile Include="Class_B.cs" />
     <Compile Include="Class_C.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Mobile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />

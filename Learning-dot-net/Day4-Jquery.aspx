@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Day1-DotNetControls.aspx.cs" Inherits="Learning_dot_net.Day1_DotNetControls" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Day4-Jquery.aspx.cs" Inherits="Learning_dot_net.Day4_Jquery" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <noscript>
-        javascript disabled 
-    </noscript>
-    <h1>Dot Net Controls</h1>
+    <h3></h3>
     <div class="form-group">
         <asp:Label ID="lblName" CssClass="form-label col-md-4 text-right" runat="server" Text="Name"></asp:Label>
-        <asp:TextBox ID="txtName" CssClass="form-control col-md-8" runat="server"></asp:TextBox>
+        <input type="text" id="txtName" onkeypress="setName()" class="form-control col-md-8"></input>
+        <br />
+        <br />
+        <span id="spnName"></span>
     </div>
     <div class="form-group">
         <asp:Label ID="lblGender" CssClass="form-label col-md-4 text-right" runat="server" Text="Gender"></asp:Label>
@@ -35,14 +35,27 @@
     <div class="form-group">
         <asp:Label ID="lblDob" CssClass="form-label col-md-4 text-right" runat="server" Text="Label"></asp:Label>
         <asp:TextBox ID="txtDob" CssClass="form-control col-md-4" runat="server"></asp:TextBox>
-        <asp:Calendar ID="Calendar1" CssClass="col-md-4" runat="server"></asp:Calendar>
     </div>
     <div class="form-group">
         <asp:Label ID="lblDocs" CssClass="form-label col-md-4 text-right" runat="server" Text="Label"></asp:Label>
         <asp:FileUpload ID="FileUpload1" CssClass="col-md-4 form-control" runat="server" />
     </div>
+    <p>We recommend reading this tutorial, in the sequence listed in the menu.</p>
+
+    <p>If you have a large screen, the menu will always be present on the left.</p>
+
+    <p>If you have a small screen, open the menu by clicking the top menu sign <span class="w3-xlarge">☰</span>.</p>
+    
+    <p>
+        Examples are better than 1000 words. Examples are often easier to understand 
+than text explanations.
+    </p>
+
 
     <script>
-        $("input[name='ctl00$MainContent$txtName']").val(); 
+        function setName() {
+            $('#spnName').text($('#txtName').val());
+        }
     </script>
+
 </asp:Content>
