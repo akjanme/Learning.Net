@@ -115,6 +115,7 @@
     <Content Include="Day2-ValidationControls.aspx" />
     <Content Include="Day4-Jquery.aspx" />
     <Content Include="Day_5_Ado_1.aspx" />
+    <Content Include="Day_6_ADO_2.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="Day_5_Ado_1.aspx.designer.cs">
       <DependentUpon>Day_5_Ado_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Day_6_ADO_2.aspx.cs">
+      <DependentUpon>Day_6_ADO_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Day_6_ADO_2.aspx.designer.cs">
+      <DependentUpon>Day_6_ADO_2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
