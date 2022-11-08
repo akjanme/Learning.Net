@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CollegeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ContactDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsPermanent" Type="bit" Nullable="false" />
+          <Property Name="StudentID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="IdCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNumber" Type="nvarchar" MaxLength="12" />
+          <Property Name="PhotoCardUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="StudentID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="80" />
+          <Property Name="Category" Type="nvarchar" MaxLength="25" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateOfAdmit" Type="datetime" />
+          <Property Name="Session" Type="nvarchar" MaxLength="20" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Percentage" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Ptet_Per" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CardID" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentSubjects">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="StudentID" Type="bigint" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ContactDe__Stude__2F10007B">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ContactDetail" Type="Self.ContactDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactDetail">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IdCard__StudentI__2B3F6F97">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="IdCard" Type="Self.IdCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IdCard">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CardID__2C3393D0">
+          <End Role="IdCard" Type="Self.IdCard" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdCard">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Stude__33D4B598">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentSubjects" Type="Self.StudentSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentSubjects">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentSu__Subje__34C8D9D1">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="StudentSubjects" Type="Self.StudentSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentSubjects">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollegeDBModelStoreContainer">
+          <EntitySet Name="ContactDetail" EntityType="Self.ContactDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdCard" EntityType="Self.IdCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSubjects" EntityType="Self.StudentSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ContactDe__Stude__2F10007B" Association="Self.FK__ContactDe__Stude__2F10007B">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ContactDetail" EntitySet="ContactDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IdCard__StudentI__2B3F6F97" Association="Self.FK__IdCard__StudentI__2B3F6F97">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="IdCard" EntitySet="IdCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CardID__2C3393D0" Association="Self.FK__Student__CardID__2C3393D0">
+            <End Role="IdCard" EntitySet="IdCard" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Stude__33D4B598" Association="Self.FK__StudentSu__Stude__33D4B598">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentSu__Subje__34C8D9D1" Association="Self.FK__StudentSu__Subje__34C8D9D1">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentSubjects" EntitySet="StudentSubjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CollegeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ContactDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsPermanent" Type="Boolean" Nullable="false" />
+          <Property Name="StudentID" Type="Int64" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__ContactDe__Stude__2F10007B" FromRole="ContactDetail" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="IdCard">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoCardUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StudentID" Type="Int64" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__IdCard__StudentI__2B3F6F97" FromRole="IdCard" ToRole="Student" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Student__CardID__2C3393D0" FromRole="IdCard" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfAdmit" Type="DateTime" Precision="3" />
+          <Property Name="Session" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Percentage" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Ptet_Per" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CardID" Type="Int32" />
+          <NavigationProperty Name="ContactDetails" Relationship="Self.FK__ContactDe__Stude__2F10007B" FromRole="Student" ToRole="ContactDetail" />
+          <NavigationProperty Name="IdCards" Relationship="Self.FK__IdCard__StudentI__2B3F6F97" FromRole="Student" ToRole="IdCard" />
+          <NavigationProperty Name="IdCard" Relationship="Self.FK__Student__CardID__2C3393D0" FromRole="Student" ToRole="IdCard" />
+          <NavigationProperty Name="Subjects" Relationship="Self.StudentSubjects" FromRole="Student" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.StudentSubjects" FromRole="Subjects" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK__ContactDe__Stude__2F10007B">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ContactDetail" Type="Self.ContactDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactDetail">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IdCard__StudentI__2B3F6F97">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="IdCard" Type="Self.IdCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="IdCard">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CardID__2C3393D0">
+          <End Role="IdCard" Type="Self.IdCard" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IdCard">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentSubjects">
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CollegeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContactDetails" EntityType="Self.ContactDetail" />
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="IdCards" EntityType="Self.IdCard" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <AssociationSet Name="FK__ContactDe__Stude__2F10007B" Association="Self.FK__ContactDe__Stude__2F10007B">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ContactDetail" EntitySet="ContactDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IdCard__StudentI__2B3F6F97" Association="Self.FK__IdCard__StudentI__2B3F6F97">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="IdCard" EntitySet="IdCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CardID__2C3393D0" Association="Self.FK__Student__CardID__2C3393D0">
+            <End Role="IdCard" EntitySet="IdCards" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="StudentSubjects" Association="Self.StudentSubjects">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Subjects" EntitySet="Subjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CollegeDBModelStoreContainer" CdmEntityContainer="CollegeDBEntities">
+          <EntitySetMapping Name="ContactDetails">
+            <EntityTypeMapping TypeName="CollegeDBModel.ContactDetail">
+              <MappingFragment StoreEntitySet="ContactDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="CollegeDBModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdCards">
+            <EntityTypeMapping TypeName="CollegeDBModel.IdCard">
+              <MappingFragment StoreEntitySet="IdCard">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="PhotoCardUrl" ColumnName="PhotoCardUrl" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CollegeDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="DateOfAdmit" ColumnName="DateOfAdmit" />
+                <ScalarProperty Name="Session" ColumnName="Session" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Ptet_Per" ColumnName="Ptet_Per" />
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="CollegeDBModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="StudentSubjects" TypeName="CollegeDBModel.StudentSubjects" StoreEntitySet="StudentSubjects">
+            <EndProperty Name="Student">
+              <ScalarProperty Name="ID" ColumnName="StudentID" />
+            </EndProperty>
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="ID" ColumnName="SubjectID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

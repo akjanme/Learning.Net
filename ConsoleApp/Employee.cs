@@ -6,30 +6,60 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class Employee
+    //types of classes 
+    //Base on access modifiers
+    public partial class Employee
     {
-        public Employee(string name,int agep)
+        public int ID { get; set; }
+        public int Name { get; set; }
+    }
+    public partial class Employee
+    {
+        public int EmpID { get; set; }
+    }
+    public static class EmployeeDetails
+    {
+        public static int EmpID { get; set; }
+    }
+    public abstract class Phone
+    {
+        public abstract void Calling(); 
+        public void SMS()
         {
-            Name = name;
-            Age = agep;
-            Console.WriteLine("Object created");
-        }
-        string Name { get; set; } 
 
-        private int age;
-        public int Age
+        }
+    }
+    public class KeyPadPhone : Phone
+    {
+        public override void Calling()
         {
-            get { return age; }
-            set {
-                age = value;
-                if (age > 60)
-                    IsRetired = true;
-                else
-                    IsRetired = false;
-            }
+            throw new NotImplementedException();
+        }
+    }
+    public interface IEmployee
+    {
+        List<Employee> Get(); 
+        void Insert(Employee employee);
+    }
+    public interface IEmployeeDetail
+    {
+        List<Employee> GetDetail(); 
+    }
+    public partial class Employee : IEmployee, IEmployeeDetail
+    {
+        public List<Employee> Get()
+        {
+            throw new NotImplementedException();
         }
 
+        public List<Employee> GetDetail()
+        {
+            throw new NotImplementedException();
+        }
 
-        public bool IsRetired { get; set; }
+        public void Insert(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
