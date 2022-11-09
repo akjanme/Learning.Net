@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BasicApp
 {
     public class Program
-    {  
+    {
         static void Main(string[] args)
         {
             //HelloWorld();
@@ -12,41 +13,73 @@ namespace BasicApp
             //Basic1 basic1 = new Basic1();
             //basic1.StringOperation();
 
-            MethodCalling methodCalling = new MethodCalling(); 
-            int a = 10;
+            //MethodCalling methodCalling = new MethodCalling(); 
+            //int a = 10;
             //Console.WriteLine(a);
             //methodCalling.ShowResult(a);//call by value
             //Console.WriteLine(a);
 
-            int c =1;
-            methodCalling.ShowResult(ref c);//call by reference
-            Console.WriteLine(c);
+            //int c =1;
+            //methodCalling.ShowResult(ref c);//call by reference
+            //Console.WriteLine(c);
 
 
-            int b;
-            int result = methodCalling.Square(a,out b);
-            Console.WriteLine(result);
+            //int b;
+            //int result = methodCalling.Square(a,out b);
+            //Console.WriteLine(result);
 
-            Console.WriteLine(b);
+            // Console.WriteLine(b);
 
             //MethodCalling.PrintResult();
 
+
+            var list = SetListData();
+            foreach (var l in list)
+            {
+                Console.WriteLine(l);
+            }
+            for (int i=0;i<list.Count;i++)
+            {
+                Console.WriteLine(list[i]);
+            }
             Console.ReadKey();
         }
 
-         /// <summary>
-         /// this method will be printing hello world
-         /// </summary>
+        /// <summary>
+        /// this method will be printing hello world
+        /// </summary>
         static void HelloWorld()
-        { 
+        {
             //this will print hello world
             Console.WriteLine("Hello World!");
         }
         static void ReadWrite()
         {
-            const string name = "MyApp";  
+            const string name = "MyApp";
 
             Console.WriteLine(name);
+        }
+
+        static void ArrayOperations(int[] arr)
+        {
+            foreach (int ar in arr)
+            {
+                int a = ar;
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int a = arr[i];
+                arr[i] = i;
+            }
+        }
+        static List<string> SetListData()
+        {
+            List<string> names = new List<string>();
+            names.Add("Ramesh");
+            names.Add("Suresh");
+            names.Add("Manish");
+            names.Add("Mohan");
+            return names;
         }
     }
 }
