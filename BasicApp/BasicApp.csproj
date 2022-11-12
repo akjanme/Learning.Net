@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basic1.cs" />
+    <Compile Include="ExceptionHandling.cs" />
     <Compile Include="MethodCalling.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

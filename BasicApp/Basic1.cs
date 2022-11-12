@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace BasicApp
 {
@@ -20,6 +21,17 @@ namespace BasicApp
             {
                 Console.WriteLine(i);
             }
+        }
+
+        public Dictionary<int, string> GetDictionary()
+        {
+            var dict = new Dictionary<int, string>
+            {
+                { 1, "Ram" },
+                { 2, "Shyam" },
+                { 3, "Kishor" }
+            };
+            return dict;
         }
     }
 }

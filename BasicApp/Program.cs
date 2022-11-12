@@ -33,15 +33,24 @@ namespace BasicApp
             //MethodCalling.PrintResult();
 
 
-            var list = SetListData();
-            foreach (var l in list)
-            {
-                Console.WriteLine(l);
-            }
-            for (int i=0;i<list.Count;i++)
-            {
-                Console.WriteLine(list[i]);
-            }
+            //var list = SetListData();
+            //foreach (var l in list)
+            //{
+            //    Console.WriteLine(l);
+            //}
+            //for (int i=0;i<list.Count;i++)
+            //{
+            //    Console.WriteLine(list[i]);
+            //}
+            //var list = new Basic1().GetDictionary();
+            //foreach (var s in list)
+            //{
+            //    Console.WriteLine(s.Key + ":" + s.Value);
+            //} 
+            ExceptionHandling exceptionHandling = new ExceptionHandling();
+
+            int result= exceptionHandling.Divide(1, 0);
+            Console.WriteLine(result);
             Console.ReadKey();
         }
 
